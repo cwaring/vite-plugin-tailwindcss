@@ -1,0 +1,38 @@
+{
+  "name": "vite-plugin-tailwindcss",
+  "description": "Tailwind CSS in Vite with JIT by default",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "tsup src/index.ts --format cjs,esm",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cwaring/vite-plugin-tailwindcss.git"
+  },
+  "keywords": [
+    "tailwindcss",
+    "vite",
+    "vite-plugin"
+  ],
+  "author": "cwaring <chris@wwaves.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cwaring/vite-plugin-tailwindcss/issues"
+  },
+  "homepage": "https://github.com/cwaring/vite-plugin-tailwindcss#readme",
+  "peerDependencies": {
+    "vite": "^2.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.13",
+    "tailwindcss": "^2.1.2",
+    "tsup": "^4.9.2",
+    "vite": "^2.2.3"
+  }
+}
