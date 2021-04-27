@@ -2,18 +2,6 @@
   "name": "vite-plugin-tailwindcss",
   "description": "Tailwind CSS in Vite with JIT by default",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "dev": "npm run build -- --watch",
-    "build": "tsup src/index.ts --clean --dts --format cjs,esm",
-    "prepublishOnly": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cwaring/vite-plugin-tailwindcss.git"
-  },
   "keywords": [
     "tailwindcss",
     "vite",
@@ -21,10 +9,27 @@
   ],
   "author": "cwaring <chris@wwaves.co>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cwaring/vite-plugin-tailwindcss.git"
+  },
   "bugs": {
     "url": "https://github.com/cwaring/vite-plugin-tailwindcss/issues"
   },
   "homepage": "https://github.com/cwaring/vite-plugin-tailwindcss#readme",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "dev": "npm run build:esm -- -w --incremental",
+    "build": "rm -rf dist && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc --declaration true",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "vite": "^2.2.0"
   },
@@ -33,7 +38,6 @@
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.13",
     "tailwindcss": "^2.1.2",
-    "tsup": "^4.9.2",
-    "vite": "^2.2.3"
+    "typescript": "^4.2.4"
   }
 }
